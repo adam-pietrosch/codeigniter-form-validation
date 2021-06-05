@@ -57,6 +57,26 @@
       </div>
 
       <div class="form-group">
+        <label>Typ účtu</label>
+
+        <select class="custom-select" name="user_type">
+          <option selected>Zvolit...</option>
+
+          <?php foreach($usertypes as $type){ ?>
+            <option value="<?= $type->id ?>"><?= $type->name ?></option>
+
+          <?php  } ?>
+        </select>
+
+        <!-- Error -->
+        <?php if($validation->getError('user_type')) {?>
+            <div class='alert alert-danger mt-2'>
+              <?= $error = $validation->getError('user_type'); ?>
+            </div>
+        <?php }?>
+      </div>
+
+      <div class="form-group">
         <button type="submit" class="btn btn-success btn-block">Uložit</button>
       </div>
     </form>
